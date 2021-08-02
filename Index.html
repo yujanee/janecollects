@@ -1,0 +1,940 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <link href="./css/custom.css" rel="stylesheet">
+
+  <title>線上訂餐</title>
+</head>
+
+<body>
+  <div id=abcA>
+    <div id="mySidenav" class="sidenav">
+      <div class="fix_side011"><div><a class="fix_side01" onclick="StapleArea()">主食</a></div></div>
+      <div><a class="fix_side02" onclick="DessertArea()">甜點</a></div>
+      <div><a class="fix_side03" onclick="OtherArea()">其他</a></div>
+      <div><a href="#" class="fix_side04" onclick="OtherArea()">置頂</a></div>
+    </div>
+  </div>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="Index.html">線上訂餐</a>
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <button id="confirmButton" type="button" class="btn btn-dark" data-toggle="modal"
+            data-target="#staticBackdrop" onclick="ShowonValue()" style="font-size: large;">確認訂餐</button>
+          <button type="button" class="btn btn-dark"onclick="clearAll()" style="font-size: large;">清除</button>
+          <button id="confirmButton" type="button" class="btn btn-dark" data-toggle="modal"
+          data-target="#staticBackdrop11" onclick="ShowonValue()" style="font-size: large;">意見回饋</button>
+          <button type="button" class="btn btn-dark" onclick="choosePic()" style="font-size: large;">今天吃什麼?</button>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+  <header>
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+      <!-- Indicators -->
+      <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+      </ul>
+
+      <!-- The slideshow -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <img src="./img/banner1.jpg" alt="image01" width="1100">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <img src="./img/banner2.png" alt="image02" width="1100">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <img src="./img/banner3.jpg" alt="image03" width="1100">
+          </div>
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+  </header>
+
+
+  <main role="main">
+
+
+    <div class="py-5 bg-light">
+      <div class="container">
+
+        <div class="row">
+          <div id="n1" class="col-md-4">
+            <div class="card mb-4 box-shadow">
+
+              <img class="card-img-top"
+                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+                src="./img/food1.jpg" data-holder-rendered="true" data-toggle="modal"
+                data-target="#staticBackdrop01">
+              <div class="card-body">
+                <p class="typeFone">牛肉麵
+                  <small class="p-3 mb-2 bg-danger text-white" id="quantity_price01" value="150">$ 150元</small>
+                </p>
+                <hr>
+                <p class="card-text">
+                  湯頭有淡淡的中藥味和多種香辛料熬煮的湯頭，甘甜濃郁巧妙結合孜然香氣，非常的特別，
+                  讓人一喝就上癮。裡頭的牛肉很多塊，肉質軟嫩不柴，每塊都會吸附滿滿的湯汁，吃起來鹹香夠味，
+                  喜歡重口味的朋友，一定要來嚐嚐。
+                </p>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- 數量 -->
+                  <div>
+                    <form id='myform' method='POST' action='#'>
+                      <label class="text-muted" for="">數量 </label>
+                      <input type='button' value='-' class='btn btn-sm btn-outline-secondary qtyminus'
+                        field='quantity1' />
+                      <input type='text' name='quantity1' value='0' class='btn btn-sm text-outline-secondary qty' />
+                      <input type='button' value='+' class='btn btn-sm btn-outline-secondary qtyplus' field='quantity1' />
+                    </form>
+                  </div>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="zero(this)"
+                      id="clear1">清除</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
+                      data-target="#staticBackdrop01">明細</button>
+                  </div>                 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="n2" class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top"
+                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+                src="./img/food2.jpg" data-holder-rendered="true" data-toggle="modal"
+                data-target="#staticBackdrop02">
+              <div class="card-body">
+                <p class="typeFone">滷肉飯
+                  <small class="p-3 mb-2 bg-danger text-white" id="quantity_price02" value="90">$ 90元</small>
+                </p>
+                <hr>
+                <p class="card-text">台灣國民美食的代名詞，記憶中的滷汁飄香、小火慢燉細熬的滷肉，
+                  澆淋在香噴噴的白米飯上，是經典不敗的簡單美味，也是許多人從小到大吃不膩的心頭愛。
+                </p>
+                <hr>
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- 數量 -->
+                  <div>
+                    <form id='myform' method='POST' action='#'>
+                      <label class="text-muted" for="">數量 </label>
+                      <input type='button' value='-' class='btn btn-sm btn-outline-secondary qtyminus'
+                        field='quantity2' />
+                      <input type='text' name='quantity2' value='0' class='btn btn-sm text-outline-secondary qty' />
+                      <input type='button' value='+' class='btn btn-sm btn-outline-secondary qtyplus' field='quantity2' />
+                    </form>
+                  </div>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="zero(this)"
+                      id="clear2">清除</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
+                      data-target="#staticBackdrop02">明細</button>
+                  </div>                 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="n3" class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top"
+                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="./img/food3.png"
+                data-holder-rendered="true" data-toggle="modal" data-target="#staticBackdrop03">
+              <div class="card-body">
+                <p class="typeFone">廣東粥
+                  <small class="p-3 mb-2 bg-danger text-white" id="quantity_price03" value="80">$ 80元</small>
+                </p>
+                <hr>
+                <p class="card-text">米粒燉的軟爛略略黏稠，完全融化於湯裡，而粥裏頭的配料也是不能馬虎，
+                  講究配料上桌的新鮮，大火煲過，打散的蛋花、綿密鬆軟的肉丸、厚實Ｑ彈的豬肝。
+                </p>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- 數量 -->
+                  <div>
+                    <form id='myform' method='POST' action='#'>
+                      <label class="text-muted" for="">數量 </label>
+                      <input type='button' value='-' class='btn btn-sm btn-outline-secondary qtyminus'
+                        field='quantity3' />
+                      <input type='text' name='quantity3' value='0' class='btn btn-sm text-outline-secondary qty' />
+                      <input type='button' value='+' class='btn btn-sm btn-outline-secondary qtyplus' field='quantity3' />
+                    </form>
+                  </div>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="zero(this)"
+                      id="clear3">清除</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
+                      data-target="#staticBackdrop03">明細</button>
+                  </div>                 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="n4" class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top"
+                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="./img/desser1.png"
+                data-holder-rendered="true" data-toggle="modal" data-target="#staticBackdrop04">
+              <div class="card-body">
+                <p class="typeFone">草莓巧達                  
+                  <small class="p-3 mb-2 bg-danger text-white" id="quantity_price04" value="120">$ 120元</small></p>
+                <hr>
+                <p class="card-text">蛋糕體是屬於鬆軟綿密的，搭上滿滿的草莓滋味相當的豐富，配上卡士達香堤不會很甜膩，一次吃上一條都沒問題，瞬間嘴巴內被草莓襲擊超享受那沁動的風味!! </p>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- 數量 -->
+                  <div>
+                    <form id='myform' method='POST' action='#'>
+                      <label class="text-muted" for="">數量 </label>
+                      <input type='button' value='-' class='btn btn-sm btn-outline-secondary qtyminus'
+                        field='quantity4' />
+                      <input type='text' name='quantity4' value='0' class='btn btn-sm text-outline-secondary qty' />
+                      <input type='button' value='+' class='btn btn-sm btn-outline-secondary qtyplus' field='quantity4' />
+                    </form>
+                  </div>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="zero(this)"
+                      id="clear4">清除</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
+                      data-target="#staticBackdrop04">明細</button>
+                  </div>                 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="n5" class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top"
+                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="./img/dessert2.png"
+                data-holder-rendered="true" data-toggle="modal" data-target="#staticBackdrop05">
+              <div class="card-body">
+                <p class="typeFone">經典檸檬塔
+                  <small class="p-3 mb-2 bg-danger text-white" id="quantity_price05" value="150">$ 150元</small>
+                </p>
+                <hr>
+                <p class="card-text">酸甜的檸檬鮮奶卡士達搭配酸溜溜的法式檸檬蛋黃醬，獨家配方做出來的塔皮香脆，喜歡酸甜滋味的您真的不容錯過 !</p>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- 數量 -->
+                  <div>
+                    <form id='myform' method='POST' action='#'>
+                      <label class="text-muted" for="">數量 </label>
+                      <input type='button' value='-' class='btn btn-sm btn-outline-secondary qtyminus'
+                        field='quantity5' />
+                      <input type='text' name='quantity5' value='0' class='btn btn-sm text-outline-secondary qty' />
+                      <input type='button' value='+' class='btn btn-sm btn-outline-secondary qtyplus' field='quantity5' />
+                    </form>
+                  </div>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="zero(this)"
+                      id="clear5">清除</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
+                      data-target="#staticBackdrop05">明細</button>
+                  </div>                 
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div id="n6" class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top"
+                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="./img/dessert3.jpg"
+                data-holder-rendered="true" data-toggle="modal" data-target="#staticBackdrop06">
+              <div class="card-body">
+                <p class="typeFone">提拉米蘇
+                  <small class="p-3 mb-2 bg-danger text-white" id="quantity_price06" value="130">$ 130元</small>
+                </p>
+                <hr>
+                <p class="card-text">完美的側面圖，最底層的鹹餅乾、中層的海綿蛋糕與綿密奶油，
+                  看起來真是賞心悅目，入口即能感受到記憶中的美好滋味</p>
+                <hr>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <!-- 數量 -->
+                    <div>
+                      <form id='myform' method='POST' action='#'>
+                        <label class="text-muted" for="">數量 </label>
+                        <input type='button' value='-' class='btn btn-sm btn-outline-secondary qtyminus'
+                          field='quantity6' />
+                        <input type='text' name='quantity6' value='0' class='btn btn-sm text-outline-secondary qty' />
+                        <input type='button' value='+' class='btn btn-sm btn-outline-secondary qtyplus' field='quantity6' />
+                      </form>
+                    </div>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick="zero(this)"
+                        id="clear6">清除</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
+                        data-target="#staticBackdrop06">明細</button>
+                    </div>                 
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="n7" class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top"
+                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="./img/drink1.jpg"
+                data-holder-rendered="true" data-toggle="modal" data-target="#staticBackdrop07">
+              <div class="card-body">
+                <p class="typeFone">拿鐵
+                  <small class="p-3 mb-2 bg-danger text-white" id="quantity_price07" value="130">$ 130元</small>
+                </p>
+                <hr>
+                <p class="card-text">香醇濃郁的Espresso沖入高溫的牛奶，氤氳的熱氣瞬間向上迷濛，
+                  那白色煙霧如夢似幻，在咖啡與牛奶極致的交融中，彷彿看見一對契合的情人，
+                  甜蜜交融的情感訴說著幸福的無限可能。</p>
+                  <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- 數量 -->
+                  <div>
+                    <form id='myform' method='POST' action='#'>
+                      <label class="text-muted">數量 </label>
+                      <input type='button' value='-' class='btn btn-sm btn-outline-secondary qtyminus'
+                        field='quantity7' />
+                      <input type='text' name='quantity7' value='0' class='btn btn-sm text-outline-secondary qty' />
+                      <input type='button' value='+' class='btn btn-sm btn-outline-secondary qtyplus'
+                        field='quantity7' />
+                    </form>
+                  </div>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="zero(this)"
+                      id="clear7">清除</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
+                      data-target="#staticBackdrop07">明細</button>
+                  </div>                 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="n8"class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top"
+                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="./img/pizza.jpg"
+                data-holder-rendered="true" data-toggle="modal" data-target="#staticBackdrop08">
+              <div class="card-body">
+                <p class="typeFone">瑪格麗特披薩
+                  <small class="p-3 mb-2 bg-danger text-white" id="quantity_price08" value="180">$ 180元</small>
+                </p>
+                <hr>
+                <p class="card-text">綠色的羅勒、白色的莫薩里拉乾酪，採用新鮮牛番茄加上羅勒，創造出清爽的口感，
+                  喜愛健康飲食的朋友不可錯過的好滋味。</p>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- 數量 -->
+                  <div>
+                    <form id='myform' method='POST' action='#'>
+                      <label class="text-muted">數量 </label>
+                      <input type='button' value='-' class='btn btn-sm btn-outline-secondary qtyminus'
+                        field='quantity8' />
+                      <input type='text' name='quantity8' value='0' class='btn btn-sm text-outline-secondary qty' />
+                      <input type='button' value='+' class='btn btn-sm btn-outline-secondary qtyplus'
+                        field='quantity8' />
+                    </form>
+                  </div>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="zero(this)"
+                      id="clear8">清除</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
+                      data-target="#staticBackdrop08">明細</button>
+                  </div>                 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="n9" class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top"
+                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="./img/burger.jpg"
+                data-holder-rendered="true" data-toggle="modal" data-target="#staticBackdrop09">
+              <div class="card-body">
+                <p class="typeFone">雙層起司堡
+                  <small class="p-3 mb-2 bg-danger text-white" id="quantity_price09" value="160">$ 160元</small>
+                </p>
+                <hr>
+                <p class="card-text">一個漢堡裡面有兩片肉餅，分量非常大方，還夾了酸黃瓜片，相當爽口解膩，
+                  絞肉在鐵板上壓扁，變成香噴噴的肉餅，搭配洋蔥和起司，讓顧客讚不絕口。</p>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- 數量 -->
+                  <div>
+                    <form id='myform' method='POST' action='#'>
+                      <label class="text-muted">數量 </label>
+                      <input type='button' value='-' class='btn btn-sm btn-outline-secondary qtyminus'
+                        field='quantity9' />
+                      <input type='text' name='quantity9' value='0' class='btn btn-sm text-outline-secondary qty' />
+                      <input type='button' value='+' class='btn btn-sm btn-outline-secondary qtyplus'
+                        field='quantity9' />
+                    </form>
+                  </div>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="zero(this)"
+                      id="clear9">清除</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
+                      data-target="#staticBackdrop09">明細</button>
+                  </div>                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-right">
+      </p>
+    </div>
+  </footer>
+  <!-- 確認訂單 -->
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">訂單明細</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="OrderConfirm">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">確認</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- 意見 -->
+    <div class="modal fade" id="staticBackdrop11" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">意見回饋</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="OrderConfirm">
+          <form>
+            <div class="form-group row">
+              <label  class="col-sm-2 col-form-label">姓名</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  value="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-sm-2 col-form-label">信箱</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  placeholder="email@example.com">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-sm-2 col-form-label">填寫意見</label>
+              <div class="col-sm-10">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12">
+              <label  class="col-form-label">是否要收到優惠券或相關訊息&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <label class="form-check-label" for="defaultCheck1">
+                   是
+                  </label>
+                </div>
+              </div>
+            </div>
+          
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="bnC()">送出</button>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- 圖片明細card-1 -->
+  <div class="modal fade" id="staticBackdrop01" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h9 class="modal-title" id="staticBackdropLabel">詳細清單</h9>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <tr>
+              <td colspan="3" class="typeFone">牛肉麵</td>
+              <td style="background-color: rgb(228, 62, 62); color: white; width: 80px; font-size: 15px;">$ 150元</td>
+            </tr>
+            <tr>
+              <td colspan="4"><img src="./img/food1.jpg" alt="" height="180px" width="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="4">湯頭有淡淡的中藥味和多種香辛料熬煮的湯頭，甘甜濃郁巧妙結合孜然香氣，非常的特別，
+                讓人一喝就上癮。裡頭的牛肉很多塊，肉質軟嫩不柴，每塊都會吸附滿滿的湯汁，吃起來鹹香夠味，
+                喜歡重口味的朋友，一定要來嚐嚐。</td>
+            </tr>
+            <tr>
+              <td colspan="4">食材</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <ul>
+                  <li>牛肋條 -------600 g</li>
+                  <li>紅蘿蔔 -------1 條</li>
+                  <li>白蘿蔔 -------半條</li>
+                  <li>洋蔥 -------半顆</li>
+                  <li>蒜末 -------適量</li>
+                  <li>薑片 -------5 片</li>
+                  <li>水 -------適量</li>
+                </ul>
+              </td>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">離開</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 圖片明細card-2 -->
+  <div class="modal fade" id="staticBackdrop02" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h9 class="modal-title" id="staticBackdropLabel">詳細清單</h9>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <tr>
+              <td colspan="3" class="typeFone">滷肉飯</td>
+              <td style="background-color: rgb(228, 62, 62); color: white; width: 80px;;">$ 90元</td>
+            </tr>
+            <tr>
+              <td colspan="4"><img src="./img/food2.jpg" alt="" height="180px" width="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="4">台灣國民美食的代名詞，記憶中的滷汁飄香、小火慢燉細熬的滷肉，澆淋在香噴噴的白米飯上，
+                是經典不敗的簡單美味，也是許多人從小到大吃不膩的心頭愛。</td>
+            </tr>
+            <tr>
+              <td colspan="4">食材</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <ul>
+                  <li>牛肋條 -------600 g</li>
+                  <li>紅蘿蔔 -------1 條</li>
+                  <li>白蘿蔔 -------半條</li>
+                  <li>洋蔥 -------半顆</li>
+                  <li>蒜末 -------適量</li>
+                  <li>薑片 -------5 片</li>
+                  <li>水 -------適量</li>
+                </ul>
+              </td>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">離開</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 圖片明細card-3-->
+  <div class="modal fade" id="staticBackdrop03" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h9 class="modal-title" id="staticBackdropLabel">詳細清單</h9>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <tr>
+              <td colspan="3" class="typeFone">廣東粥</td>
+              <td style="background-color: rgb(228, 62, 62); color: white; width: 80px;;">$ 80元</td>
+            </tr>
+            <tr>
+              <td colspan="4"><img src="./img/food3.png" alt="" height="180px" width="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="4">米粒燉的軟爛略略黏稠，完全融化於湯裡，而粥裏頭的配料也是不能馬虎，講究配料上桌的新鮮，
+                大火煲過，打散的蛋花、綿密鬆軟的肉丸、厚實Ｑ彈的豬肝，</td>
+            </tr>
+            <tr>
+              <td colspan="4">食材</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <ul>
+                  <li>米 -------100g</li>
+                  <li>皮蛋 -------1大匙</li>
+                  <li>蔥 -------1根</li>
+                  <li>水 -------1700g</li>
+                  <li>豬肝 -------適當</li>
+                  <li>絞肉 -------適當</li>
+                </ul>
+              </td>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">離開</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 圖片明細card-4-->
+  <div class="modal fade" id="staticBackdrop04" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h9 class="modal-title" id="staticBackdropLabel">詳細清單</h9>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <tr>
+              <td colspan="3" class="typeFone">草莓巧達</td>
+              <td style="background-color: rgb(228, 62, 62); color: white; width: 80px; font-size: 15px;">$ 120元</td>
+            </tr>
+            <tr>
+              <td colspan="4"><img src="./img/desser1.png" alt="" height="180px" width="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="4">蛋糕體是屬於鬆軟綿密的，搭上滿滿的草莓滋味相當的豐富，
+                配上卡士達香堤不會很甜膩，一次吃上一條都沒問題瞬間嘴巴內被草莓襲擊超享受那沁動的風味!! </td>
+            </tr>
+            <tr>
+              <td colspan="4">食材</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <ul>
+                  <li>蛋黃 -------8個</li>
+                  <li>植物油 -------60g</li>
+                  <li>低筋麵粉 -------150g</li>
+                  <li>砂糖 -------30g</li>
+                  <li>鮮乳 -------100g</li>
+                  <li>草莓 -------適當</li>
+                  <li>卡士達醬 -------適當</li>
+                </ul>
+              </td>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">離開</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 圖片明細card-5-->
+  <div class="modal fade" id="staticBackdrop05" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h9 class="modal-title" id="staticBackdropLabel">詳細清單</h9>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <tr>
+              <td colspan="3" class="typeFone">經典檸檬塔</td>
+              <td style="background-color: rgb(228, 62, 62); color: white; width: 80px; font-size: 15px;">$ 150元</td>
+            </tr>
+            <tr>
+              <td colspan="4"><img src="./img/dessert2.png" alt="" height="180px" width="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="4">酸甜的檸檬鮮奶卡士達搭配酸溜溜的法式檸檬蛋黃醬，
+                獨家配方做出來的塔皮香脆，喜歡酸甜滋味的您真的不容錯過 !</td>
+            </tr>
+            <tr>
+              <td colspan="4">食材</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <ul>
+                  <li>低筋麵粉 -------250g</li>
+                  <li>無鹽奶油 -------125g</li>
+                  <li>糖粉 -------100g</li>
+                  <li>全蛋 -------1顆</li>
+                  <li>檸檬汁 -------170g</li>
+                  <li>檸檬皮削 -------3顆</li>
+                  <li>白砂糖 -------220g</li>
+                </ul>
+              </td>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">離開</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 圖片明細card-6-->
+  <div class="modal fade" id="staticBackdrop06" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h9 class="modal-title" id="staticBackdropLabel">詳細清單</h9>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <tr>
+              <td colspan="3" class="typeFone">提拉米蘇</td>
+              <td style="background-color: rgb(228, 62, 62); color: white; width: 80px; font-size: 15px;">$ 130元</td>
+            </tr>
+            <tr>
+              <td colspan="4"><img src="./img/dessert3.jpg" alt="" height="180px" width="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="4">完美的側面圖，最底層的鹹餅乾、中層的海綿蛋糕與綿密奶油，
+                看起來真是賞心悅目，入口即能感受到記憶中的美好滋味</td>
+            </tr>
+            <tr>
+              <td colspan="4">食材</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <ul>
+                  <li>蛋黃 -------*3</li>
+                  <li>白砂糖 -------30g</li>
+                  <li>蛋白 -------*2</li>
+                  <li>鮮奶油 -------100g</li>
+                  <li>消化餅感 ------適當</li>
+                  <li>即溶咖啡 -------適當</li>
+                  <li>起司 -------250g</li>
+                </ul>
+              </td>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">離開</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 圖片明細card-7-->
+  <div class="modal fade" id="staticBackdrop07" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h9 class="modal-title" id="staticBackdropLabel">詳細清單</h9>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <tr>
+              <td colspan="3" class="typeFone">拿鐵</td>
+              <td style="background-color: rgb(228, 62, 62); color: white; width: 80px; font-size: 15px;">$ 130元</td>
+            </tr>
+            <tr>
+              <td colspan="4"><img src="./img/drink1.jpg" alt="" height="180px" width="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="4">香醇濃郁的Espresso沖入高溫的牛奶，氤氳的熱氣瞬間向上迷濛，
+                那白色煙霧如夢似幻，在咖啡與牛奶極致的交融中，彷彿看見一對契合的情人，
+                甜蜜交融的情感訴說著幸福的無限可能。</td>
+            </tr>
+            <tr>
+              <td colspan="4">食材</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <ul>
+                  <li>咖啡豆 -------100g</li>
+                  <li>牛奶 -------30g</li>
+
+                </ul>
+              </td>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">離開</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 圖片明細card-8-->
+  <div class="modal fade" id="staticBackdrop08" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h9 class="modal-title" id="staticBackdropLabel">詳細清單</h9>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <tr>
+              <td colspan="3" class="typeFone">瑪格麗特披薩</td>
+              <td style="background-color: rgb(228, 62, 62); color: white; width: 80px; font-size: 15px;">$ 180元</td>
+            </tr>
+            <tr>
+              <td colspan="4"><img src="./img/pizza.jpg" alt="" height="180px" width="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="4">綠色的羅勒、白色的莫薩里拉乾酪，採用新鮮牛番茄加上羅勒，創造出清爽的口感，
+                喜愛健康飲食的朋友不可錯過的好滋味。</td>
+            </tr>
+            <tr>
+              <td colspan="4">食材</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <ul>
+                  <li>麵粉 -------150g</li>
+                  <li>橄欖油 -------30g</li>
+                  <li>番茄片 -------2顆</li>
+                  <li>九層塔 -------5g</li>
+                  <li>紅醬 -------適當</li>
+                  <li>起司 -------適當</li>
+
+                </ul>
+              </td>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">離開</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 圖片明細card-9-->
+  <div class="modal fade" id="staticBackdrop09" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h9 class="modal-title" id="staticBackdropLabel">詳細清單</h9>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <tr>
+              <td colspan="3">雙層起司堡</td>
+              <td style="background-color: rgb(228, 62, 62); color: white; width: 80px;font-size: 15px;">$ 160元</td>
+            </tr>
+            <tr>
+              <td colspan="4"><img src="./img/burger.jpg" alt="" height="180px" width="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="4">一個漢堡裡面有兩片肉餅，分量非常大方，還夾了酸黃瓜片，相當爽口解膩，絞肉在鐵板上壓扁，變成香噴噴的肉餅，搭配洋蔥和起司，讓顧客讚不絕口。</td>
+            </tr>
+            <tr>
+              <td colspan="4">食材</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <ul>
+                  <li>洋蔥 --------半顆</li>
+                  <li>麵包粉 -------3大匙</li>
+                  <li>雞蛋 ---------1顆</li>
+                  <li>牛絞肉 -------200g</li>
+                  <li>牛奶 -------3大匙</li>
+                  <li>起司 -------適當</li>
+                  <li>球生菜 ------ 1片</li>
+                </ul>
+              </td>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">離開</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/custom_function.js"></script>
+  
+
+</body>
+
+</html>
